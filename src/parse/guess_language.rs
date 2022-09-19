@@ -65,6 +65,7 @@ pub enum Language {
     TypeScript,
     Yaml,
     Zig,
+    Solidity,
 }
 
 /// The language name shown to the user.
@@ -117,6 +118,7 @@ pub fn language_name(language: Language) -> &'static str {
         TypeScript => "TypeScript",
         Yaml => "YAML",
         Zig => "Zig",
+        Solidity => "Solidity",
     }
 }
 
@@ -200,6 +202,7 @@ pub const LANG_EXTENSIONS: &'static [(Language, &[&str])] = &[
     (Tsx, &["tsx"]),
     (Yaml, &["yaml", "yml"]),
     (Zig, &["zig"]),
+    (Solidity, &["sol"]),
 ];
 
 use Language::*;
@@ -276,6 +279,7 @@ fn from_emacs_mode_header(src: &str) -> Option<Language> {
             "typescript" => Some(TypeScript),
             "yaml" => Some(Yaml),
             "zig" => Some(Zig),
+            "sol" => Some(Solidity),
             _ => None,
         };
         if lang.is_some() {
